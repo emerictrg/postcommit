@@ -1,0 +1,13 @@
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  server: {
+    host: "0.0.0.0",
+    hmr: {
+      host: "0.0.0.0",
+    },
+    watch: {
+      usePolling: true,
+    },
+  },
+});

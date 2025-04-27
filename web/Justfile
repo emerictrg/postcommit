@@ -1,18 +1,22 @@
-# Justfile for frontend development
+# Justfile for frontend development (moved to project root)
+
+# Latest Node.js Docker image version
+NODE_IMAGE := "postcommit-web"
+CURRENT_DIR := `pwd`
 
 dev:
     # Start the Vite development server
-    npm run dev
+    docker run -it --rm -v {{CURRENT_DIR}}:/app -w /app -p 5173:5173 -u node {{NODE_IMAGE}} npm run dev
 
 build:
     # Build the frontend for production
-    npm run build
+    docker run -it --rm -v {{CURRENT_DIR}}:/app -w /app -u node {{NODE_IMAGE}} npm run build
 
 preview:
     # Preview the production build locally
-    npm run preview
+    docker run -it --rm -v {{CURRENT_DIR}}:/app -w /app -u node {{NODE_IMAGE}} npm run preview
 
 install:
     # Install dependencies
-    npm install
+    docker run -it --rm -v {{CURRENT_DIR}}:/app -w /app -u node {{NODE_IMAGE}} npm install
 

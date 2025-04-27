@@ -1,0 +1,11 @@
+services:
+  web:
+    image: caddy:2-alpine
+    container_name: web-caddy
+    ports:
+      - "80:80"
+    volumes:
+      - ./web/dist:/srv
+      - ./web/Caddyfile:/etc/caddy/Caddyfile
+    restart: unless-stopped
+
